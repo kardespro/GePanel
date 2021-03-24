@@ -24,6 +24,44 @@ const client = new Discord.Client();
 //onst path = require("path");
 const lis = ["MIT"];
 
+
+/*
+
+
+
+
+ ____  __.  _____ __________________  ___________ _____________________________ ________   
+|    |/ _| /  _  \\______   \______ \ \_   _____//   _____/\______   \______   \\_____  \  
+|      <  /  /_\  \|       _/|    |  \ |    __)_ \_____  \  |     ___/|       _/ /   |   \ 
+|    |  \/    |    \    |   \|    `   \|        \/        \ |    |    |    |   \/    |    \
+|____|__ \____|__  /____|_  /_______  /_______  /_______  / |____|    |____|_  /\_______  /
+        \/       \/       \/        \/        \/        \/                   \/         \/ 
+* =======================================================
+* Lisans : MIT
+* AUTHOR: KARDESPRO
+* LUTFEN README.MD YI OKUYUNUZ
+* REMIXLEMEYI UNUTMAYIN
+* ÇALAN OLURSA GEREKLI IŞLEMLER BAŞLATILICAKTIR
+* =======================================================
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // our default array of dreams
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
