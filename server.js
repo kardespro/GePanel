@@ -191,9 +191,19 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
   app.get("/", (req, res) => {
     render(res, req, "home.ejs")
   });
+app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
+    const sunucu = client.guilds.cache.get(req.params.sunucuID);
+    const guild = client.guilds.cache.get(req.params.guildID);
+    if (!sunucu) return res.json({"hata":"Bot "+req.params.sunucuID+" ID adresine sahip bir sunucuda bulunmuyor."});
+    const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+    render(res, req, "ayarlar/sayfa.ejs", {sunucu, guild});
+  });
 
+app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
+  let küfür = db.fetch(`küfür.${}.durum`)
 
-
+});
 
 
 
