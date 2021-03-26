@@ -99,7 +99,98 @@ const dataDir = path.resolve(`${process.cwd()}${path.sep}site`);
   app.use(helmet());
 
 
+///GePanel
+app.engine("html", require("ejs").renderFile);
+  app.set("view engine", "html");
 
+  var bodyParser = require("body-parser");
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: true
+  })); 
+  
+  function girisGerekli(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    req.session.backURL = req.url;
+    res.redirect("/giris");
+  }
+  
+  const render = (res, req, template, data = {}) => {
+    const baseData = {
+      bot: client,
+      path: req.path,
+      user: req.isAuthenticated() ? req.user : null
+    };
+    res.render(path.resolve(`${templateDir}${path.sep}${template}`), Object.assign(baseData, data));
+  };
+  
+  app.get("/giris", (req, res, next) => {
+    if (req.session.backURL) {
+      req.session.backURL = req.session.backURL;
+    } else if (req.headers.referer) {
+      const parsed = url.parse(req.headers.referer);
+      if (parsed.hostname === app.locals.domain) {
+        req.session.backURL = parsed.path;
+      }
+    } else {
+      req.session.backURL = "";
+    }
+    next();
+    
+
+  },
+  passport.authenticate("discord"));
+
+  app.get("/giris", (req, res, next) => {
+    if (req.session.backURL) {
+      req.session.backURL = req.session.backURL;
+    } else if (req.headers.referer) {
+      const parsed = url.parse(req.headers.referer);
+      if (parsed.hostname === app.locals.domain) {
+        req.session.backURL = parsed.path;
+      }
+    } else {
+      req.session.backURL = "/en";
+    }
+    next();
+  },
+  passport.authenticate("discord"));
+  
+  app.get("/autherror", (req, res) => {
+    render(res,req, "error/auth.ejs");
+  });
+app.get("/callback", passport.authenticate("discord", { failureRedirect: "/autherror" }), async (req, res) => {
+    if (client.ayarlar.sahip.includes(req.user.id)) {
+      req.session.isAdmin = true;
+    } else {
+      req.session.isAdmin = false;
+    }
+    if (req.session.backURL) {
+      const url = req.session.backURL;
+      req.session.backURL = null;
+      res.redirect(url);
+
+    } else {
+      res.redirect(`/dashboard`);
+    }
+    
+    
+  });
+  
+
+  app.get("/cikis", function(req, res) {
+    req.session.destroy(() => {
+      req.logout();
+      res.redirect("/");
+      
+    });
+
+    
+  });
+  
+  app.get("/", (req, res) => {
+    render(res, req, "home.ejs")
+  });
 
 
 
