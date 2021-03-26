@@ -197,16 +197,28 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
     if (!sunucu) return res.json({"hata":"Bot "+req.params.sunucuID+" ID adresine sahip bir sunucuda bulunmuyor."});
     const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
     if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+//  const kanalid = req.body.kanalid;
+  
     render(res, req, "ayarlar/sayfa.ejs", {sunucu, guild});
   });
-
 app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
+ const sunucu = client.guilds.cache.get(req.params.sunucuID);
+ 
+   const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+   
+  if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+   render(res, req, "ayarlar/kufur.ejs", {});
+  
+  });
+app.post("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
+ 
   const islem = req.query.islem;
   if(islem == "basarili"){
     const bmesaj = "Işlem Başarılı!";
      render(res, req, "ayarlar/kufur.ejs", {bmesaj});
   
   }
+  
   let küfür = db.fetch(`küfür.${req.params.sunucuID}.durum`)
     const sunucu = client.guilds.cache.get(req.params.sunucuID);
   const inputbody = req.body.inputbody;
@@ -215,9 +227,13 @@ app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
        res.redirect(`/dashboard/${req.params.sunucuID}/kufur?islem=basarili`);
   }
   if(inputbody == "false"){
-    db.delete(`küfür.${req.params}`)
+    db.delete(`küfür.${req.params.sunucuID}`)
+    res.redirect(`/dashboard/${req.params.sunucuID}/kufur?islem=basarili`);
      
   }
+  const kanalid = req.body.kanalid;
+  db.set(`küfür.${req.params.sunucuID}.kanal`, kanalid) 
+  
    const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
    
   if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
