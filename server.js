@@ -22,6 +22,13 @@ const url = require("url");
 var bodyParser = require('body-parser');
 const client = new Discord.Client();
 //onst path = require("path");
+const passport = require("passport");
+const session = require("express-session");
+const LevelStore = require("level-session-store")(session);
+const Strategy = require("passport-discord").Strategy;
+const moment = require("moment");
+require("moment-duration-format");
+const helmet = require("helmet");
 const lis = ["MIT"];
 
 
@@ -51,7 +58,45 @@ const lis = ["MIT"];
 
 
 
+const gepanel = {
+    oauthSecret: "vBZnwpizI1EagY3Rxowd9s84IXFFQvoH",
+    callbackURL: `https://gepanel.glitch.me/callback`,
+    domain: `https://gepanel.glitch.me/`
+  };
+console.log('Auth Bağlandi')
+  
+const dataDir = path.resolve(`${process.cwd()}${path.sep}site`);
 
+  const templateDir = path.resolve(`${dataDir}${path.sep}html${path.sep}`);
+
+  app.use("/css", express.static(path.resolve(`${dataDir}${path.sep}css`)));
+  
+  passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+  passport.deserializeUser((obj, done) => {
+    done(null, obj);
+  });
+
+  passport.use(new Strategy({
+    clientID: "77",
+    clientSecret: gepanel.oauthSecret,
+    callbackURL: gepanel.callbackURL,
+    scope: ["identify", "guilds" , "email"]
+  },
+  (accessToken, refreshToken, profile, done) => {
+    process.nextTick(() => done(null, profile));
+  }));
+
+  app.use(session({
+    secret: 'gepanel<3',
+    resave: false,
+    saveUninitialized: false,
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(helmet());
 
 
 
