@@ -201,8 +201,28 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   });
 
 app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
-  let küfür = db.fetch(`küfür.${}.durum`)
-
+  const islem = req.query.islem;
+  if(islem == "basarili"){
+    const bmesaj = "Işlem Başarılı!";
+     render(res, req, "ayarlar/kufur.ejs", {bmesaj});
+  
+  }
+  let küfür = db.fetch(`küfür.${req.params.sunucuID}.durum`)
+    const sunucu = client.guilds.cache.get(req.params.sunucuID);
+  const inputbody = req.body.inputbody;
+  if(inputbody == "true"){
+    db.set(`küfür.${req.params.sunucuID}.durum`, true)
+       res.redirect(`/dashboard/${req.params.sunucuID}/kufur?islem=basarili`);
+  }
+  if(inputbody == "false"){
+    db.delete(`küfür.${req.params}`)
+     
+  }
+   const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+   
+  if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+   render(res, req, "ayarlar/kufur.ejs", {});
+  
 });
 
 
