@@ -12,7 +12,7 @@ const path = require('path');
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
  
-const adapter = new FileSync('db.json')
+const adapter = new FileSync('./Database/dashboard/db.json')
 const db = low(adapter)
 
 const config = require("./config.json")
@@ -206,7 +206,7 @@ app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
  
    const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
    
-  if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+  if (!isManaged && !req.session.isAdmin) return render(res,req, "error/yonet.ejs");
    render(res, req, "ayarlar/kufur.ejs", {});
   
   });
