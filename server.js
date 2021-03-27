@@ -59,8 +59,8 @@ const lis = ["MIT"];
 
 
 const gepanel = {
-    oauthSecret: "vBZnwpizI1EagY3Rxowd9s84IXFFQvoH",
-    callbackURL: `https://gepanel.glitch.me/callback`,
+    oauthSecret: "-jV5Nq6uQ9SIyEw3AVmbdv1zRZlZVWbY",
+    callbackURL: `https://gepanel.glitch.me//callback`,
     domain: `https://gepanel.glitch.me/`
   };
 console.log('Auth Bağlandi')
@@ -79,7 +79,7 @@ const dataDir = path.resolve(`${process.cwd()}${path.sep}site`);
   });
 
   passport.use(new Strategy({
-    clientID: "77",
+    clientID: "825430536465809409",
     clientSecret: gepanel.oauthSecret,
     callbackURL: gepanel.callbackURL,
     scope: ["identify", "guilds" , "email"]
