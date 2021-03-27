@@ -1,0 +1,275 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Ana Sayfa</title>
+  <link rel="shortcut icon" href="https://user.oyungg.net/assets/images/favicon.ico">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha256-NJWeQ+bs82iAeoT5Ktmqbi3NXwxcHlfaVejzJI2dklU=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/css/perfect-scrollbar.min.css" integrity="sha256-d5alsvLL8ACwbrySTCophVXbeii7E6Qm4gs/E0Oc22k=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" integrity="sha256-Phb65CA8UtNIOfnRXDSUB0eOaknq+Muq1+JY8Bm3zK4=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha256-soW/iAENd5uEBh0+aUIS1m2dK4K6qTcB9MLuOnWEQhw=" crossorigin="anonymous" />
+<link href="https://user.oyungg.net/assets/css/app.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.min.css" integrity="sha256-0JL+BtqmDiiObLBSZrxHKfxsydEXGb/4pXrWql05dto=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha256-PHcOkPmOshsMBC+vtJdVr5Mwb7r0LkSVJPlPrp/IMpU=" crossorigin="anonymous" />
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146163230-2"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-146163230-2');
+    </script>
+</head>
+<body>
+<div class="app header-danger-gradient">
+<div class="layout">
+<div class="header navbar">
+<div class="header-container">
+<div class="nav-logo">
+<a href="https://user.oyungg.net/">
+<div class="logo logo-white" style="background-image: url(https://user.oyungg.net/assets/images/logo/logo-white.png)"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li>
+<a class="sidenav-fold-toggler" href="javascript:void(0);">
+<i class="mdi mdi-menu"></i>
+</a>
+<a class="sidenav-expand-toggler" href="javascript:void(0);">
+<i class="mdi mdi-menu"></i>
+</a>
+</li>
+</ul>
+<ul class="nav-right">
+<li class="notifications dropdown dropdown-animated scale-left">
+<span class="counter" id="basket-counter" hidden>0</span>
+<a href="" class="dropdown-toggle" data-toggle="dropdown">
+<i class="mdi mdi-basket"></i>
+</a>
+<ul class="dropdown-menu dropdown-lg p-v-0">
+<li class="p-v-15 p-h-20 border bottom text-dark">
+<div class="row">
+<h5 class="m-b-0 col">
+<i class="mdi mdi-basket p-r-10"></i>
+<span>Sepetim</span>
+</h5>
+<h5 class="m-b-0 col text-right" id="basket-delete" hidden>
+<i class="mdi mdi-delete-circle text-primary btn-lg" onclick="deleteAllItems()"></i>
+</h5>
+</div>
+ </li>
+<li>
+<ul class="list-media overflow-y-auto relative scrollable" style="max-height: 300px" id="basket-list">
+</ul>
+</li>
+<li class="p-v-15 p-h-20 text-center">
+<span id="basket-link">
+Sepetin boş
+</span>
+</li>
+</ul>
+</li>
+<li class="user-profile dropdown dropdown-animated scale-left">
+<a href="" class="dropdown-toggle" data-toggle="dropdown">
+<img class="profile-img img-fluid" src="https://user.oyungg.net/assets/images/avatars/default.png">
+</a>
+<ul class="dropdown-menu dropdown-md p-v-0">
+<li>
+<ul class="list-media">
+<li class="list-item p-15">
+<div class="media-img">
+<img src="https://user.oyungg.net/assets/images/avatars/default.png">
+</div>
+<div class="info">
+<span class="title text-semibold">kardespro</span>
+<span class="sub-title">OyuncuGG</span>
+</div>
+</li>
+</ul>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="https://user.oyungg.net/users/settings">
+<i class="mdi mdi-settings p-r-10"></i>
+<span>Ayarlar</span>
+</a>
+</li>
+<li>
+<a href="https://user.oyungg.net/users/logout">
+<i class="mdi mdi-logout p-r-10"></i>
+<span>Çıkış Yap</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="side-nav expand-lg">
+<div class="side-nav-inner">
+<ul class="side-nav-menu scrollable">
+<li class="side-nav-header">
+<span>NAVİGASYON</span>
+</li>
+<li class="nav-item dropdown open">
+<a href="https://user.oyungg.net/">
+<span class="icon-holder">
+<i class="mdi mdi-gauge"></i>
+</span>
+<span class="title">Ana Sayfa</span>
+</a>
+</li>
+<li class="nav-item dropdown ">
+<a class="dropdown-toggle" href="javascript:void(0);">
+<span class="icon-holder">
+<i class="mdi mdi-shopping"></i>
+</span>
+<span class="title">Mağaza</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="nav-item dropdown ">
+<a href="javascript:void(0);">
+ <span>SkyBlock</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="">
+<a href="https://user.oyungg.net/shop/3">Rütbeler</a>
+</li clas>
+</ul>
+</li>
+<li class="nav-item dropdown ">
+<a href="javascript:void(0);">
+<span>EggWars</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="">
+<a href="https://user.oyungg.net/shop/4">Rütbeler</a>
+</li clas>
+</ul>
+</li>
+<li class="nav-item dropdown ">
+<a href="javascript:void(0);">
+<span>Premium</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="">
+<a href="https://user.oyungg.net/shop/6">Rütbeler</a>
+</li clas>
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown ">
+<a class="dropdown-toggle" href="javascript:void(0);">
+<span class="icon-holder">
+<i class="mdi mdi-wallet"></i>
+</span>
+<span class="title">Bakiye İşlemleri</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu ">
+<li class="nav-item dropdown ">
+<a href="javascript:void(0);">
+<span>Bakiye Yükle</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/wallet/cpay">Kredi Kartı</a>
+</li>
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/wallet/mpay">Mobil Ödeme</a>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/wallet/transfer">Bakiye Transfer</a>
+</li>
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/wallet/history">İşlem Geçmişi</a>
+</li>
+</ul>
+</li>
+<li class="nav-item dropdown ">
+<a class="dropdown-toggle" href="javascript:void(0);">
+<span class="icon-holder">
+<i class="mdi mdi-library-books"></i>
+</span>
+<span class="title">Alışveriş İşlemleri</span>
+<span class="arrow">
+<i class="mdi mdi-chevron-right"></i>
+</span>
+</a>
+<ul class="dropdown-menu">
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/shop/repo">Alışveriş Depom</a>
+</li>
+<li class="nav-item dropdown ">
+<a href="https://user.oyungg.net/shop/history">İşlem Geçmişi</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer class="content-footer">
+<div class="footer">
+<div class="copyright">
+<span>Copyright © 2014 - 2021 <b class="text-dark">GePanel</b>. Tüm hakları saklıdır.</span>
+<span class="go-right">
+Coded with
+<i class="mdi mdi-heart text-danger"></i>
+</span>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha256-C8oQVJ33cKtnkARnmeWp6SDChkU+u7KvsNMFUzkkUzk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.jquery.min.js" integrity="sha256-V0b5tB5M4XpVNoxuJBxCKx2s2PawZStkcrDpIWsjowA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js" integrity="sha256-EPrkNjGEmCWyazb3A/Epj+W7Qm2pB9vnfXw+X6LImPM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha256-ITwLtH5uF4UlWjZ0mdHOhPwDpLoqxzfFCZXn1wE56Ps=" crossorigin="anonymous"></script>
+<script src="https://user.oyungg.net/assets/js/app.min.js"></script>
+<script src="https://user.oyungg.net/assets/js/pages/shop/basket.min.js"></script>
+<script>
+    document.cookie = "utimezone=" + Intl.DateTimeFormat().resolvedOptions().timeZone + "; path=/";
+</script>
+
+
+</body>
+</html>
