@@ -174,7 +174,7 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
       res.redirect(url);
 
     } else {
-      res.redirect(`/dashboard`);
+      res.redirect(`/anasayfa`);
     }
     
     
@@ -190,8 +190,13 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
 
     
   });
+
   app.get("/dashboard", girisGerekli , (req, res) => {
     render(res, req, "dashboard.ejs")
+  });
+
+  app.get("/anasayfa", girisGerekli , (req, res) => {
+    render(res, req, "anasayfa.ejs")
   });
 
   app.get("/", (req, res) => {

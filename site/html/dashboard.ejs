@@ -1,75 +1,70 @@
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Applicator - Admin Dashboard Template</title>
+<div class="content">
+        <div class="container">
+ 
+  <div class="jumbotron" style="background-color:#f">
+    <div align="center">
+    
+		 
+      <h3>Sunucu Seçimi</h3>
+      <h5>Yönetmek istediğiniz sunucuya tıklayın</h5>
+      
+      <% user.guilds.forEach((sunucu) => {
+        const permsOnGuild = new perms(sunucu.permissions);
+        if(!permsOnGuild.has("MANAGE_GUILD")) return;
+        
+      %>
+      <%
+      
+      let link, eklenmemis;
+      
+      if (bot.guilds.has(sunucu.id) === true) {
+        link = `/dashboard/${sunucu.id}/yonet`
+      } else {
+        
+        link = `https://discordapp.com/oauth2/authorize?client_id=612726771632308225&scope=bot&permissions=8&guild_id=`+sunucu.id+``
+        
+        eklenmemis = true
+      }
+      %>
+      <% if (sunucu.icon) { %>
+      <a href="<%=link%>" target="<%if(eklenmemis === true) {%>_blank<%} else {  }%>"><img title="<%=sunucu.name%>" class="rounded-circle" src="<%= `https://cdn.discordapp.com/icons/${sunucu.id}/${sunucu.icon}.png?size=128` %>" style="width: 80px;"></a>
+		  <% } else { %>
+      
+      <a href="<%=link%>"><canvas title="<%=sunucu.name%>" style="width: 80px;background-color:#363940;" class="rounded-circle"  id="<%= sunucu.name.split(' ').join('').replace(`'`, ``) %>" width="80px" height="80px" ></canvas></a>
+		  <script>
+        function draw() {
+        const ctx = document.getElementById("<%= sunucu.name.split(' ').join('').replace(`'`, ``) %>").getContext('2d');
+			  ctx.font = '20px Arial';
+			  ctx.textAlign = "center";
+			  ctx.fillStyle = "white";
+			  ctx.fillText("<%= sunucu.name.split(' ').map(v => v[0]).join('') %>", 40, 48);
+        document.getElementById("<%= sunucu.name.split(' ').join('').replace(`'`, ``) %>").style.marginBottom = "-35px";
+        };
+        draw();
+		  </script>
+		<% } %>
+    <% }); %> 
+      <br><br>
+         <a href="anasayfa" button style="background-color:orange; color:#fff" type="sumbit" id="formbtn" class="btn btn-default"> <i aria-hidden="true"></i> Geri Dön</button> </a>    </div>
+  
+    </div>
+  </div>
+  
+  <script src="/css/js/jquery.min.js"></script>
+  <script src="/css/js/popper.min.js"></script>
+  <script src="/css/js/bootstrap-material-design.min.js"></script>
+  <script src="https://unpkg.com/default-passive-events"></script>
+  <script src="/css/js/perfect-scrollbar.jquery.min.js"></script>
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" href="http://www.themenate.net/applicator/dist/assets/images/logo/apple-touch-icon.png">
-    <link rel="shortcut icon" href="http://www.themenate.net/applicator/dist/assets/images/logo/favicon.png">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <!-- core dependcies css -->
-    <link rel="stylesheet" href="http://www.themenate.net/applicator/dist/assets/vendor/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="http://www.themenate.net/applicator/dist/assets/vendor/PACE/themes/blue/pace-theme-minimal.css">
-    <link rel="stylesheet" href="http://www.themenate.net/applicator/dist/assets/vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+  <script src="/css/js/chartist.min.js"></script>
+ 
+  <script src="/css/js/bootstrap-notify.js"></script>
+ 
+  <script src="/css/js/material-dashboard.js?v=2.1.0"></script>
+    
 
-    <!-- page css -->
+  <script src="/css/js/demo.js"></script>
 
-    <!-- core css -->
-    <link href="http://www.themenate.net/applicator/dist/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://www.themenate.net/applicator/dist/assets/css/themify-icons.css" rel="stylesheet">
-    <link href="http://www.themenate.net/applicator/dist/assets/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="http://www.themenate.net/applicator/dist/assets/css/animate.min.css" rel="stylesheet">
-    <link href="http://www.themenate.net/applicator/dist/assets/css/app.css" rel="stylesheet">
-</head>
-
-<body class=" pace-running"><div class="pace pace-active"><div class="pace-progress" data-progress-text="20%" data-progress="20" style="transform: translate3d(20%, 0px, 0px);">
-  <div class="pace-progress-inner"></div>
-</div>
-<div class="pace-activity"></div></div>
-    <div class="app header-default side-nav-dark">
-        <div class="layout">
-            <!-- Header START -->
-            <div class="header navbar">
-                <div class="header-container">
-                    <div class="nav-logo">
-                        <a href="http://www.themenate.net/applicator/dist/index.html">
-                            <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
-                            <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')"></div>
-                        </a>
-                    </div>
-                    <ul class="nav-left">
-                        <li>
-                            <a class="sidenav-fold-toggler">
-                                <i class="mdi mdi-menu"></i>
-                            </a>
-                            <a class="sidenav-expand-toggler">
-                                <i class="mdi mdi-menu"></i>
-                            </a>
-                        </li>
-                        <li class="search-box">
-                            <a class="search-toggle">
-                                <i class="search-icon mdi mdi-magnify"></i>
-                                <i class="search-icon-close mdi mdi-close-circle-outline"></i>
-                            </a>
-                        </li>
-                        <li class="search-input">
-                            <input class="form-control" type="text" placeholder="Type to search...">
-                            <div class="search-predict">
-                                <div class="search-wrapper scrollable ps-container ps-theme-default" data-ps-id="5544ae2e-fa16-4375-72c7-ab6e5e79fa7f">
-                                    <div class="p-v-10">
-                                        <span class="display-block m-v-5 p-h-20 text-gray">
-                                            <i class="ti-file p-r-5"></i>
-                                            <span>Files</span>
-                                        </span>
-                                        <ul class="list-media">
-                                            <li class="list-item">
-                                                <a class="media-hover p-h-20">
-                                                    <div class="media-img">
-                                                        <div class="icon-avatar bg-success">
-                                                            <i class="mdi mdi-file-outline"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info">
-                                                        <span class="title p-t-10">Document.xls</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                          
+ 
