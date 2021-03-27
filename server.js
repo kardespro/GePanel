@@ -159,6 +159,9 @@ app.engine("html", require("ejs").renderFile);
   app.get("/autherror", (req, res) => {
     render(res,req, "error/auth.ejs");
   });
+client.ayarlar = {
+  "sahip": ""
+  };
 app.get("/callback", passport.authenticate("discord", { failureRedirect: "/autherror" }), async (req, res) => {
     if (client.ayarlar.sahip.includes(req.user.id)) {
       req.session.isAdmin = true;
@@ -187,7 +190,10 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
 
     
   });
-  
+  app.get("/dashboard", girisGerekli , (req, res) => {
+    render(res, req, "dashboard.ejs")
+  });
+
   app.get("/", (req, res) => {
     render(res, req, "home.ejs")
   });
