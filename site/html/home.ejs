@@ -1,6 +1,6 @@
 <%- include('ek/header') %>
 <meta property="theme-color" content="#2c2f33">
-
+<!--
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/vendor/daterangepicker/daterangepicker.css">
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/css/util.css">
 <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v5/css/main.css">
-  
+  -->
 <body>
           <!--   <div class="js">
     <div id="preloader"></div>
@@ -19,70 +19,229 @@
  </div>
 </div>-->
   <style>
+    /*
   body{
     background:green;
     }
 .container-login100 {
     background-image: url(https://cdn.discordapp.com/attachments/739846345107570758/740985721866944623/14c037b7102f18b2d2ccf065a52bb595.png);
-} 
+} */
   </style>
   <style>
-    /*Discord*/
-.btn-face,
-.btn-discord {
-  font-family: Montserrat-SemiBold;
-  font-size: 18px;
-  line-height: 1.2;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  width: calc((100% - 20px) / 2);
-  height: 70px;
-  border-radius: 10px;
-  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -ms-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+    
+    
+    
+    
+    $color-bluish: #7289DA;
+
+:root {
+  font-size: 16px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {background-color: #23272A}
+
+html,
+body,
+.row {
+  height: 100%;
+  text-align: center;
+}
+
+.pen-info {
+  color: #d4d3d4;
+  font-size: 80%;
+  text-transform: uppercase;
+}
+
+.c-button {
+  color: #000;
+  font-weight: 700;
+  font-size: 1em;
+  text-decoration: none;
+  padding: .7em 1.8em;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.c-button--gooey {
+  color: $color-bluish;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 4px solid $color-bluish;
+  border-radius: 0;  
+  padding: 1.2em 3.4em;
   position: relative;
-  z-index: 1;
+  transition: all 700ms ease;
+  .c-button__blobs {
+    height: 100%;
+    filter: url(#goo);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -3px;
+    right: -1px;
+    z-index: -1;
+    div {
+      background-color: $color-bluish;
+      width: 34%;
+      height: 100%;
+      border-radius: 100%;
+      position: absolute;
+      transform: scale(1.4) translateY(125%) translateZ(0);
+      transition: all 700ms ease;
+      &:nth-child(1) {
+        left: -5%;
+      }
+      &:nth-child(2) {
+        left: 30%;
+        transition-delay: 60ms;
+      }
+      &:nth-child(3) {
+        left: 66%;
+        transition-delay: 25ms;
+      }
+    }
+  }
+  &:hover {
+    color: #fff;
+    .c-button__blobs {
+      div {
+        transform: scale(1.4) translateY(0) translateZ(0);
+      }
+    }
+  }
 }
-.btn-discord {
-  color: #555555;
-  background-color: #7289DA;
+
+$bg : #7289DA;
+$size : 40vh;
+
+*{ box-sizing:border-box;}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #23272A;
+  position: relative;
 }
-.btn-discord img {
-  width: 30px;
-  margin-right: 15px;
-  padding-bottom: 3px;
+
+.c {
+  width: $size+2;
+  height: $size+2;
+  position: absolute;
+  bottom: -$size/1.8;
+  left: 0;
+  border-radius: 43% 40%  43% 40%;
+  background: #7289DA;
+  animation: 
+    bounce 1s infinite alternate,
+    wave 2s infinite linear, 
+    waking 7s infinite alternate linear;
+  &-e {
+    width: $size/6;
+    height: $size/6;
+    border: $size/23 solid #fff;
+    transform: translateY(0);
+    border-radius: 50%;
+    animation: blink 4s infinite linear;
+  }
+  &-c {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    width: $size - 6;
+    bottom: $size/10;
+    z-index: 1;
+    left: $size/4;
+    padding: 0 ($size/$size - 0.2vw);
+    z-index: 1;
+    animation: waking 7s infinite alternate linear;
+  }
 }
+
+@keyframes wave {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes waking {
+  100% { left: calc(100% - #{$size}); }
+}
+
+@keyframes bounce {
+  100% { bottom: -$size/1.5; }
+}
+
+@keyframes blink {
+  0%, 5%, 30%, 37%, 100% { 
+    height: $size/6; 
+    border-width: $size/22; 
+    transform: translateY(0); 
+  }
+  3%, 33% {
+    height: 0; 
+    border-width: 0; 
+    transform: translateY(-$size/10); 
+  }
+}
+.container {
+            display: flex;
+            width: 100%;
+            padding: 40px 0;
+            align-items: center;
+            justify-content: center;
+          }
+          .container a {
+            background: #7289DA;
+            padding: 0 20px;
+            line-height: 35px;
+            color: #fff;
+            font-family: 'Helvetica', 'Arial', sans-sefir;
+            font-size: 20px;
+            display: block;
+            text-decoration: none;
+            border-radius: 3px;
+          }
     </style>
-  <div class="limiter">
-<!-- start background code-->
-<div class="container-login100" style="background-image: url(https://cdn.discordapp.com/attachments/739846345107570758/740985721866944623/14c037b7102f18b2d2ccf065a52bb595.png)">
-<!-- end background code-->
-<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-<form class="login100-form validate-form flex-sb flex-w">
- <!-- <p class="login-form-title p-b-53">GePanel | Awesome ! </p>
-  <br>
-<p class="login-form-title p-b-53">Login to Continue</p>  
-<a href="/giris" class="btn-discord m-b-20" style="color:white">
-<img src="https://img.favpng.com/9/14/3/discord-social-media-computer-icons-png-favpng-J4Dq15J77us55NAHPFkPKQk6x_t.jpg" alt="">
-Discord
-</a>-->
+  .c
+.c-c
+  .c-e
+  .c-e
+
+  <div class="container">
+<div class="row middle-on-small center-on-small">
+  <div class="column small-12 medium-6 large-4">
+    <a href="#!" class="c-button c-button--gooey">
+      login discord
+      <div class="c-button__blobs">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </a>
+    
   </div>
-  </div>
-  </div>
-  </form>
+</div>
+    </div>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+            <feBlend in="SourceGraphic" in2="goo"></feBlend>
+        </filter>
+    </defs>
+</svg>
+
+
+  
+  
+  
+  
   <style>
 .container-login100-form-btn {
   width: 100%;
@@ -142,9 +301,10 @@ Discord
 }
 
   </style>
+  <!--
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
-  
+  -->
