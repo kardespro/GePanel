@@ -218,6 +218,8 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   
     render(res, req, "ayarlar/sayfa.ejs", {sunucu, guild});
   });
+/*
+Test
 app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
  const sunucu = client.guilds.cache.get(req.params.sunucuID);
  
@@ -257,7 +259,7 @@ app.post("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
    render(res, req, "ayarlar/kufur.ejs", {});
   
 });
-
+*/
 
 
 client.login("ODI1NDMwNTM2NDY1ODA5NDA5.YF90Fw.ATZ59zFJnsMxVx6Ww2kTBLHZKcg");
