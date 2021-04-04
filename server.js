@@ -239,17 +239,17 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   app.post("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
     const reqislem = req.body.fakesistem;
     if(reqislem == "on"){
-    database.set(`fake-time.${req.params.sunucuID}`, req.body.zaman);
-      database.set(`fake-channel.${message.guild.id}`, req.body.chid);
-database.set(`fake-role.${message.guild.id}`, req.body.roleid);
+    db.set(`fake-time.${req.params.sunucuID}`, req.body.zaman);
+      db.set(`fake-channel.${message.guild.id}`, req.body.chid);
+db.set(`fake-role.${message.guild.id}`, req.body.roleid);
  
       res.redirect(`/dashboard/${sunucuID}/fakesistem`);
       };
     if(reqislem == "off"){
-      database.delete(`fake-role.${message.guild.id}`); 
-      database.delete(`fake-time.${req.params.sunucuID}`);
-    database.delete(`fake-role.${message.guild.id}`);
-      database.delete(`fake-channel.${message.guild.id}`);
+      db.delete(`fake-role.${message.guild.id}`); 
+      db.delete(`fake-time.${req.params.sunucuID}`);
+    db.delete(`fake-role.${message.guild.id}`);
+      db.delete(`fake-channel.${message.guild.id}`);
        res.redirect(`/dashboard/${sunucuID}/fakesistem`);
      
     };
