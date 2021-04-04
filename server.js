@@ -63,6 +63,7 @@ const gepanel = {
     callbackURL: `https://gepanel.glitch.me//callback`,
     domain: `https://gepanel.glitch.me/`
   };
+
 console.log('Auth Bağlandi')
   
 const dataDir = path.resolve(`${process.cwd()}${path.sep}site`);

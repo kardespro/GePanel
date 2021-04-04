@@ -11,6 +11,9 @@ Coded By Kardespro
 
 
 -->
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+
 <meta property="theme-color" content="green">
 <body>
           <!--   <div class="js">
@@ -210,14 +213,10 @@ body {
   <p> GePanel | Awesome ! </p>
   <br><br><br>
   <br>
-  .c
-.c-c
-  .c-e
-  .c-e
-
   <div class="container">
 <div class="row middle-on-small center-on-small">
   <div class="column small-12 medium-6 large-4">
+    <button onclick="giris()">
     <a href="/giris" class="c-button c-button--gooey">
       Giriş Yap
       <div class="c-button__blobs">
@@ -225,10 +224,31 @@ body {
         <div></div>
         <div></div>
       </div>
+      
     </a>
-    
+    </button>
   </div>
 </div>
+    <script>
+      function giris(){
+        const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully'
+})
+        };
+      </script>
     </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
