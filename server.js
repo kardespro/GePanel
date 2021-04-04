@@ -230,7 +230,23 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   });
 
   app.get("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
+    const swid = req.params.sunucuID;
+    const connectt = client.guilds.cache.get(swid);
+    render(res, req, "/ayarlar/fakesistem.ejs")
     
+  });
+
+  app.post("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
+    const reqislem = req.body.fakesistem;
+    if(reqislem == "on"){
+    database.set(`fake-time.${req.params.sunucuID}`, req.body.zaman);
+      res.redirect(`/dashboard/${sunucuID}/fakesistem`);
+      };
+    if(reqislem == "off"){
+      database.delete(`fake-time.${req.params.sunucuID}`);
+    database.delete(`fake-role.${message.guild.id}`);
+      database.delete(`fake-channel.${message.guild.id}`);
+    };
     render(res, req, "/ayarlar/fakesistem.ejs")
     
   });
@@ -277,6 +293,33 @@ app.post("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
   
 });
 */
+
+//BOT
+client.on('guildMemberAdd', async member => {// can#0002
+
+  const database = require('quick.db');
+  if(member.user.bot) return;
+  
+  const kanal = member.guild.channels.cache.get(await database.fetch(`fake-channel.${member.guild.id}`) || 0);
+  const zaman = await database.fetch(`fake-time.${member.guild.id}`);
+  const rol = member.guild.roles.cache.get(await database.fetch(`fake-role.${member.guild.id}`) || 0);
+  if(!kanal || !zaman || !rol) return;
+
+  if(member.user.createdAt.getTime() < require('ms')(zaman)) {
+
+    member.roles.add(rol.id);
+    const embed = new Discord.MessageEmbed()
+    .setColor('BLUE')
+    .setTitle('Fake Tetikleyici')
+    .setDescription(`**${member.user.tag}** Fake sistemine takıldı!`);
+    return kanal.send(embed);
+
+  } else return;
+
+});// codare 
+
+
+
 
 
 client.login("ODI1NDMwNTM2NDY1ODA5NDA5.YF90Fw.ATZ59zFJnsMxVx6Ww2kTBLHZKcg");
