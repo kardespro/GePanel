@@ -197,7 +197,12 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
   });
 
   app.get("/anasayfa", girisGerekli , (req, res) => {
-    render(res, req, "anasayfa.ejs")
+    const guildsize = client.guilds.cache.size;
+    const w = client;
+    render(res, req, "anasayfa.ejs",{
+      w,
+      guildsize
+    })
   });
 
   app.get("/", (req, res) => {
@@ -255,7 +260,7 @@ app.post("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
 
 
 
-
+client.login("ODI1NDMwNTM2NDY1ODA5NDA5.YF90Fw.ATZ59zFJnsMxVx6Ww2kTBLHZKcg");
 // our default array of dreams
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
