@@ -31,6 +31,16 @@ require("moment-duration-format");
 const helmet = require("helmet");
 const lis = ["MIT"];
 
+const backup = () => {
+    fs.copyFile('./db.json', `./backups/yedekleme • ${moment().format('D-M-YYYY • H.mm.ss')} • laura.sqlite`, err => {
+        if (err) return console.log(err);
+        console.log('Veritabanını yedekledim.');
+    });
+};
+
+client.on('ready', () => {
+    setInterval(() => backup(), 1000 * 60 * 60 * 24); // Günde bir kere yedekler.
+});
 
 /*
 
@@ -218,6 +228,13 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   
     render(res, req, "ayarlar/sayfa.ejs", {sunucu, guild});
   });
+
+  app.get("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
+    
+    render(res, req, "/ayarlar/fakesistem.ejs")
+    
+  });
+
 /*
 Test
 app.get("/dashboard/:sunucuID/kufur", girisGerekli, (req, res) => {
