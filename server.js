@@ -231,8 +231,14 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
 
   app.get("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
     const swid = req.params.sunucuID;
+    const query = req.query.basarili;
+    if(query){
+      const basmsg = "Başarılı!";
+       render(res, req, "/ayarlar/fakesistem.ejs",{basmsg})
+   
+      };
     const connectt = client.guilds.cache.get(swid);
-    render(res, req, "/ayarlar/fakesistem.ejs")
+    render(res, req, "/ayarlar/fakesistem.ejs",{query})
     
   });
 
