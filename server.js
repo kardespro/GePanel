@@ -39,6 +39,7 @@ const backup = () => {
 };
 
 client.on('ready', () => {
+  client.user.setActivity("GePanel || Awesome ");
     setInterval(() => backup(), 1000 * 60 * 60 * 24); // Günde bir kere yedekler.
 });
 
