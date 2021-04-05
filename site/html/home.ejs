@@ -1,337 +1,421 @@
-<%- include('ek/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#03192E">
+    <title>GePanel | Awesome </title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
 
-<!-- GePanel 
-
-Coded By Kardespro
-
-* https://github.com/kardespro
-* kardespro.cf
-
-
-
-
--->
-<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
-
-<meta property="theme-color" content="green">
-<body>
-          <!--   <div class="js">
-    <div id="preloader"></div>
-      <div>
- </div>
-</div>-->
-  <style>
-    /*
-  body{
-    background:green;
-    }
-.container-login100 {
-    background-image: url(https://cdn.discordapp.com/attachments/739846345107570758/740985721866944623/14c037b7102f18b2d2ccf065a52bb595.png);
-} */
-  </style>
-  <style>
-    
-    
-    
-    
-    $color-bluish: #7289DA;
-
-:root {
-  font-size: 16px;
-  font-family: 'Ubuntu', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
 }
 
-body {background-color: #23272A}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
 
-html,
-body,
-.row {
-  height: 100%;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #03192E;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
-.pen-info {
-  color: #d4d3d4;
-  font-size: 80%;
-  text-transform: uppercase;
-}
-
-.c-button {
-  color: #000;
-  font-weight: 700;
-  font-size: 1em;
-  text-decoration: none;
-  padding: .7em 1.8em;
+button {
+  color: #04223e;
+  border: 0;
+  font-weight: 600;
   cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
-.c-button--gooey {
-  color: $color-bluish;
-  font-size: 1.3em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border: 4px solid $color-bluish;
-  border-radius: 0;  
-  padding: 1.2em 3.4em;
-  position: relative;
-  transition: all 700ms ease;
-  .c-button__blobs {
-    height: 100%;
-    filter: url(#goo);
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: -3px;
-    right: -1px;
-    z-index: -1;
-    div {
-      background-color: $color-bluish;
-      width: 34%;
-      height: 100%;
-      border-radius: 100%;
-      position: absolute;
-      transform: scale(1.4) translateY(125%) translateZ(0);
-      transition: all 700ms ease;
-      &:nth-child(1) {
-        left: -5%;
-      }
-      &:nth-child(2) {
-        left: 30%;
-        transition-delay: 60ms;
-      }
-      &:nth-child(3) {
-        left: 66%;
-        transition-delay: 25ms;
-      }
-    }
-  }
-  &:hover {
-    color: #fff;
-    .c-button__blobs {
-      div {
-        transform: scale(1.4) translateY(0) translateZ(0);
-      }
-    }
-  }
+a {
+  text-decoration: none;
+  color: #FFF;
+  padding: 5px;
 }
 
-$bg : #7289DA;
-$size : 40vh;
-
-*{ box-sizing:border-box;}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: #23272A;
-  position: relative;
+a:hover, button:hover {
+  opacity: .7;
 }
 
-.c {
-  width: $size+2;
-  height: $size+2;
-  position: absolute;
-  bottom: -$size/1.8;
-  left: 0;
-  border-radius: 43% 40%  43% 40%;
-  background: #7289DA;
-  animation: 
-    bounce 1s infinite alternate,
-    wave 2s infinite linear, 
-    waking 7s infinite alternate linear;
-  &-e {
-    width: $size/6;
-    height: $size/6;
-    border: $size/23 solid #fff;
-    transform: translateY(0);
-    border-radius: 50%;
-    animation: blink 4s infinite linear;
-  }
-  &-c {
-    display: flex;
-    justify-content: space-around;
-    position: absolute;
-    width: $size - 6;
-    bottom: $size/10;
-    z-index: 1;
-    left: $size/4;
-    padding: 0 ($size/$size - 0.2vw);
-    z-index: 1;
-    animation: waking 7s infinite alternate linear;
-  }
+.navbar {
+  list-style-type: none;
+  padding: 5px;
 }
 
-@keyframes wave {
-  100% { transform: rotate(360deg); }
+.navbar .nav-item:not(:last-child) {
+  float: left;
+  padding: 10px;
 }
 
-@keyframes waking {
-  100% { left: calc(100% - #{$size}); }
+
+.navbar .nav-item:last-child {
+  float: right;
+  padding: 10px 15px;
+  margin: 10px;
+  background-color: #F47850;
+  border-radius: 10px;
 }
 
-@keyframes bounce {
-  100% { bottom: -$size/1.5; }
+.hero-section {
+  background-color: #04223E;
+  background-image: url("https://img.onl/h6GGjR");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 16.8em 0 14.8em 0;
+  border-radius: 0 0 50px 50px;
+
 }
 
-@keyframes blink {
-  0%, 5%, 30%, 37%, 100% { 
-    height: $size/6; 
-    border-width: $size/22; 
-    transform: translateY(0); 
-  }
-  3%, 33% {
-    height: 0; 
-    border-width: 0; 
-    transform: translateY(-$size/10); 
-  }
+.hero-title {
+  margin: 15px;
 }
-.container {
-            display: flex;
-            width: 100%;
-            padding: 40px 0;
-            align-items: center;
-            justify-content: center;
-          }
-          .container a {
-            background: #7289DA;
-            padding: 0 20px;
-            line-height: 35px;
-            color: #fff;
-            font-family: 'Helvetica', 'Arial', sans-sefir;
-            font-size: 20px;
-            display: block;
-            text-decoration: none;
-            border-radius: 3px;
-          }
-    </style>
-  <br><br><br><br><br><br>
-  <p> GePanel | Awesome ! </p>
-  <br><br><br>
-  <br>
-  <div class="container">
-<div class="row middle-on-small center-on-small">
-  <div class="column small-12 medium-6 large-4">
-    <button onclick="giris()">
-    <a href="/giris" class="c-button c-button--gooey">
-      Giriş Yap
-      <div class="c-button__blobs">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      
-    </a>
-    </button>
-  </div>
-</div>
-    <script>
-      function giris(){
-        const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
 
-Toast.fire({
-  icon: 'success',
-  title: 'Signed in successfully'
-})
-        };
-      </script>
-    </div>
+.hero-description {
+  margin: 20px;
+}
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
-    <defs>
-        <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
-            <feBlend in="SourceGraphic" in2="goo"></feBlend>
-        </filter>
-    </defs>
-</svg>
+.hero-btn {
+  background: linear-gradient(45deg, #F47850, #FFA93A);
+}
+
+.s-m-section {
+  background: linear-gradient(45deg, #F47850, #FFA93A);
+  padding: 20px;
+}
 
 
-  
-  
-  
-  
-  <style>
-.container-login100-form-btn {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
+.s-m-title {
+  margin: 20px;
+}
+
+.s-m-descritpion {
+  margin: 0 0 40px 0;
+}
+
+.s-m-btn {
+  border: 2px solid #03192e;
+  color: #03192e;
+  padding: 8px 20px;
+  background: 0;
+}
+
+.s-m-btn-2 {
+  background-color: #03192e;
+  color: #F47850;
+}
+
+.time-load-section {
+  background: linear-gradient(0deg, #E6F0FA 40%, #03192E 40%);
+  padding: 100px 0;
+}
+
+.card {
+  padding: 60px;
+  border-radius: 10px;
+  background: #FFF;
+  color: #414f7b;
+  margin: 15px;
+  box-shadow: -1px 1px 20px 2px #00000030;
+}
+
+.statics-section {
+  background-color: #E6F0FA;
+  color: #03192E;
+  padding: 70px;
+}
+
+.statics-description {
+  margin: 10px 0 50px 0;
+}
+
+.statics-rows {
+  flex: 33.33%;
+}
+
+.feutures-section {
+  padding: 85px 60px;
+  background-image: url("/img/wave.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+.feutures-card {
+  padding: 15px;
+}
+
+.row {
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
-.login100-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  width: 100%;
-  height: 60px;
-  background-color: #3ecbd4;
-  border-radius: 10px;
-  font-family: Poppins-Medium;
-  font-size: 16px;
-  color: #fff;
-  line-height: 1.2;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  position: relative;
-  z-index: 1;
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-.login100-form-btn::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  top: 0;
-  left: 0;
-  background: #2cbac3;
-  opacity: 0;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
 }
 
-.login100-form-btn:hover:before {
-  opacity: 1;
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
 }
 
-  </style>
-  <script>
-  console.log("Hemen Kapat Burayi ! ");
-  </script>
-  <!--
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 
-  -->
+}
+
+@media (min-width: 576px) {
+  .card {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .statics-rows {
+    flex: 100%;
+    -ms-flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+  .statics-rows {
+    flex: 33.33%;
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    -ms-flex: 0 0 45%;
+     flex: 0 0 45%; 
+     max-width: 45%;
+  }
+  .statics-rows {
+    flex: 33.33%;
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
+  }
+}
+
+    </style>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>  
+  <body>
+      <ul class="navbar">
+        <li class="nav-item"><a href="/" >Home</a></li>
+        <li class="nav-item"><a href="#feutures" >Features</a></li>
+        <li class="nav-item"><a href="https://discord.gg/gg" >Support</a></li>
+        <li class="nav-item"><a href="/giris" >Login</a></li>
+      </ul>
+    
+    <header class="hero-section">
+      
+      <h1 class="hero-title">GePanel</h1>
+    
+      <p class="hero-description">
+        It's time to add the fastest and more special bot ever !
+      </p>
+      <button class="hero-btn">
+        Add to server
+      </button>
+    </header>
+    
+    <div class="time-load-section">
+      <div class="container">
+        <h1>
+          Special bot means your server shit
+      </h1>
+      <p>
+        Be special with [GePanel] !
+      </p>
+        
+      <div class="row">
+      <div class="card">
+        <h1 class="card-timing">
+          0.7 seconds
+        </h1>
+        <h3 class="card-title">
+          [GePanel] fast as a Bunny
+        </h3>
+        <img class="card-image" src="/img/rabbit.png" width="200">
+        <p class="card-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        </p>
+      </div>
+        
+      <div class="card">
+        <h1 class="card-timing">
+          Strong
+        </h1>
+        <h3 class="card-title">
+          [Your bot] strong as a Tiger
+        </h3>
+        <img class="card-image" src="/img/tiger.png" width="200">
+        <p class="card-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        </p>
+      </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="statics-section">
+      <div class="container">
+
+      <h1 class="statics-title">
+        [Your bot name] has more than thousands users
+      </h1>
+        <p class="statics-description">
+          Add the bot to your server and make the bot been bigger and bigger
+        </p>
+      <div class="row">
+        
+      <div class="statics-rows">
+        <h2>
+          USERS:
+        </h2>
+        110000
+      </div>
+      <div class="statics-rows">
+        <h2>
+        GUILDS:
+        </h2>
+        10000
+      </div>
+      <div class="statics-rows">
+        <h2>
+        UPTIME:
+        </h2>
+        97.99%
+      </div>
+      </div>
+      </div>
+    </div>
+    
+    <div id="feutures" class="feutures-section">
+      <h1 class="feutures-title">
+        Lorem ipsum dolor sit amet
+      </h1>
+      <p class="feutures-desciption">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+      </p>
+      <div class="row">
+        <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+        <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+        <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+                <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+                <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+                <div class="feutures-card">
+          <img src="/img/rabbit.png" class="card-image" width="200">
+          <h4 class="card-title">
+            Lorem ipsume
+          </h4>
+          <p class="card-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="s-m-section">
+    <h1 class="s-m-title">
+      It's time to add the bot to your server
+      </h1>
+      <p class="s-m-descritpion">
+        To discover more and more
+
+      </p>
+        <button class="s-m-btn">
+          ADD TO SERVER
+        </button>
+        <button class="s-m-btn-2">
+          LOGIN
+        </button>
+        <br><br>
+        <a href="https://discord.gg/gg" class="s-m-link discord"><svg width="30" height="35" viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.51429 0.416748H26.4857C28.4229 0.416748 30 1.98841 30 3.93591V34.5834L26.3143 31.3376L24.24 29.4242L22.0457 27.3913L22.9543 30.5517H3.51429C1.57714 30.5517 0 28.9801 0 27.0326V3.93591C0 1.98841 1.57714 0.416748 3.51429 0.416748ZM18.7371 21.3438C19.2514 21.993 19.8686 22.7276 19.8686 22.7276C23.6571 22.608 25.1143 20.1309 25.1143 20.1309C25.1143 14.6301 22.6457 10.1713 22.6457 10.1713C20.1771 8.32633 17.8286 8.37758 17.8286 8.37758L17.5886 8.65091C20.5029 9.53925 21.8571 10.8205 21.8571 10.8205C20.0743 9.84675 18.3257 9.36841 16.6971 9.1805C15.4629 9.04383 14.28 9.078 13.2343 9.21466C13.1445 9.21466 13.0678 9.22768 12.9813 9.24236C12.9687 9.24449 12.9559 9.24666 12.9429 9.24883C12.3429 9.30008 10.8857 9.52216 9.05143 10.3251C8.41714 10.6155 8.04 10.8205 8.04 10.8205C8.04 10.8205 9.46286 9.47091 12.5486 8.58258L12.3771 8.37758C12.3771 8.37758 10.0286 8.32633 7.56 10.1713C7.56 10.1713 5.09143 14.6301 5.09143 20.1309C5.09143 20.1309 6.53143 22.608 10.32 22.7276C10.32 22.7276 10.9543 21.9588 11.4686 21.3097C9.29143 20.6605 8.46857 19.2938 8.46857 19.2938C8.46857 19.2938 8.64 19.4134 8.94857 19.5842C8.96571 19.6013 8.98286 19.6184 9.01714 19.6355C9.04286 19.6526 9.06857 19.6654 9.09429 19.6782C9.12 19.691 9.14571 19.7038 9.17143 19.7209C9.6 19.9601 10.0286 20.148 10.4229 20.3017C11.1257 20.5751 11.9657 20.8484 12.9429 21.0363C14.2286 21.2755 15.7371 21.3609 17.3829 21.0534C18.1886 20.9167 19.0114 20.6776 19.8686 20.3188C20.4686 20.0967 21.1371 19.7722 21.84 19.3109C21.84 19.3109 20.9829 20.7117 18.7371 21.3438ZM10.1487 16.6458C10.1487 15.6037 10.9201 14.7495 11.8973 14.7495C12.8744 14.7495 13.663 15.6037 13.6458 16.6458C13.6458 17.6878 12.8744 18.542 11.8973 18.542C10.9373 18.542 10.1487 17.6878 10.1487 16.6458ZM16.4058 16.6458C16.4058 15.6037 17.1773 14.7495 18.1544 14.7495C19.1315 14.7495 19.903 15.6037 19.903 16.6458C19.903 17.6878 19.1315 18.542 18.1544 18.542C17.1944 18.542 16.4058 17.6878 16.4058 16.6458Z" fill="white"></path></svg></a>
+        <a href="https://fb.com" class="s-m-link fb"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="https://twitter.com" class="s-m-link twitter"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="https://instagram.com" class="s-m-link ig"><i class="fa fa-instagram-square fa-2x"></i></a>
+    </div>
+    <br>
+    <script src="/script.js" defer></script>
+    <script>
+      const nounou=['location','href','querySelector','https://discord.com/oauth2/authorize?client_id=clientid&scope=bot&permissions=8','©\x20Made\x20by\x20NouNou\x20due\x20spotify','createTextNode','button.s-m-btn','createElement','footer','onclick','button.hero-btn','appendChild'];(function(Nounou,nOunou){const NOunou=function(nOUnou){while(--nOUnou){Nounou['push'](Nounou['shift']());}};NOunou(++nOunou);}(nounou,0xfd));const Nounou=function(nOunou,NOunou){nOunou=nOunou-0x0;let noUnou=nounou[nOunou];return noUnou;};document[Nounou('0x1')](Nounou('0x9'))[Nounou('0x8')]=nOunou=>window[Nounou('0xb')][Nounou('0x0')]=Nounou('0x2');document[Nounou('0x1')](Nounou('0x5'))[Nounou('0x8')]=NOunou=>window[Nounou('0xb')][Nounou('0x0')]='https://discord.com/oauth2/authorize?client_id=clientid&scope=bot&permissions=8';let footer=document[Nounou('0x6')](Nounou('0x7'));let text=document[Nounou('0x4')](Nounou('0x3'));footer[Nounou('0xa')](text);document['body'][Nounou('0xa')](footer);
+
+      </script>
+  </body>
+</html>
