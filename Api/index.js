@@ -1,0 +1,1 @@
+const userApi = require("/user");

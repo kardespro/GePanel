@@ -70,11 +70,12 @@ client.on('ready', () => {
 
 var fs = require("fs");
 //DISCORD
+/*
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();  
 fs.readdir('./komutlar/', (err, files) => { 
   if (err) console.error(err);               
-  console.log(`[Waron Stüdyo TR] ${files.length} komut yükleniyor...`);
+  console.log(`[GeServer] ${files.length} komut yükleniyor...`);
   files.forEach(f => {                      
     let komutlar = require(`./komutlar/${f}`);   
     console.log(`${komutlar.config.name} komutu yüklendi.`);    
@@ -140,7 +141,7 @@ client.unload = command => {
     });
 };
 
-
+*/
 
 
 
@@ -319,7 +320,8 @@ app.get("/callback", passport.authenticate("discord", { failureRedirect: "/authe
   });
 
   app.get("/", (req, res) => {
-    render(res, req, "home.ejs")
+    
+    render(res, req, "home.ejs",{client})
   });
 app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
     const sunucu = client.guilds.cache.get(req.params.sunucuID);
@@ -441,5 +443,5 @@ client.login("ODI1NDMwNTM2NDY1ODA5NDA5.YF90Fw.ATZ59zFJnsMxVx6Ww2kTBLHZKcg");
 // our default array of dreams
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
-  console.log("GePanel Şu Rakamli " + listener.address().port "Bağlandı");
+  console.log("GePanel Şu Rakamli Porta Bağlandı " + listener.address().port);
 });
