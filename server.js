@@ -335,14 +335,18 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
   });
 
   app.get("/dashboard/:sunucuID/fakesistem", girisGerekli , (req, res) => {
-    const swid = req.params.sunucuID;
+    const sunucu = req.params.sunucuID;
     const query = req.query.basarili;
+      if (!sunucu) return res.json({"hata":"Bot "+req.params.sunucuID+" ID adresine sahip bir sunucuda bulunmuyor."});
+    const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
+
     if(query){
       const basmsg = "Başarılı!";
        render(res, req, "/ayarlar/fakesistem.ejs",{basmsg})
    
       };
-    const connectt = client.guilds.cache.get(swid);
+    const connectt = client.guilds.cache.get(sunucu);
     render(res, req, "/ayarlar/fakesistem.ejs",{query})
     
   });
@@ -367,6 +371,19 @@ db.set(`fake-role.${message.guild.id}`, req.body.roleid);
     render(res, req, "/ayarlar/fakesistem.ejs")
     
   });
+
+app.get("/dashboard/:sunucuID/nottut", (req,res) => {
+ // db.get("not").push({author: message.author.id, not: a, name: argB, zaman: `${moment(Date.now()).add("h", "3").locale("tr").format("DD:MM:YYYY | HH:MM:SS")}`}).write();
+           
+  });
+
+app.post("/dashboard/:sunucuID/nottut", (req,res) => {
+  const notbody = req.body.not;
+  const notismi = req.body.notismi;
+  db.get("not").push({author: message.author.id, not: notbody, name: notismi, zaman: `${moment(Date.now()).add("h", "3").locale("tr").format("DD:MM:YYYY | HH:MM:SS")}`}).write();
+           res.redirect(`/dashboard/${req.params.sunucuID}/notbak?re=true?save=true?db=lowdb`);
+  });
+
 
 /*
 Test
