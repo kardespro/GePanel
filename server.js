@@ -441,5 +441,5 @@ client.login("ODI1NDMwNTM2NDY1ODA5NDA5.YF90Fw.ATZ59zFJnsMxVx6Ww2kTBLHZKcg");
 // our default array of dreams
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("GePanel Şu Rakamli " + listener.address().port "Bağlandı");
 });
