@@ -1,0 +1,28 @@
+/*
+
+
+
+            GePanel | 
+
+
+  SOURCE: https://cpanel.kardespro.cf/assets/theme/cpanel/storage/langs/az_AZ.min.css
+
+
+*/
+::root{
+  yellow: #bdd426;
+  
+}
+.icon{
+  background:white;
+}
+.icon > .az_AZ {
+  color:green;
+  padding: 50%;
+  border:50px 100px;
+}
+.cpanel_select_language {
+  
+  border: 100px 200px;/*sj*/
+  
+}
