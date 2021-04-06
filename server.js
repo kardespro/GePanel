@@ -338,7 +338,7 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
     const sunucu = req.params.sunucuID;
     const query = req.query.basarili;
       if (!sunucu) return res.json({"hata":"Bot "+req.params.sunucuID+" ID adresine sahip bir sunucuda bulunmuyor."});
-    const isManaged = sunucu && !!sunucu.member(req.user.id) ? sunucu.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    const isManaged = sunucu && !!sunucu.members.get(req.user.id) ? sunucu.member.get(req.user.id).permissions.has("MANAGE_GUILD") : false;
     if (!isManaged && !req.session.isAdmin) return res.json({"hata":"Bu sunucuda Sunucuyu Yönet iznin bulunmuyor. Bu yüzden bu sayfaya erişim sağlayamazsın."});
 
     if(query){
