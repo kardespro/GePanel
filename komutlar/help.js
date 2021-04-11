@@ -1,15 +1,17 @@
 const Discord = require('discord.js')
 exports.run = async (client, message) => {
   const hello = new Discord.MessageEmbed()
+  .setColor("RANDOM")
   .setTitle("GePanel | Yardım Menüsü")
-  .setDescription("GePanel",`
+  .setDescription(`
+      **GePanel**
    Tüm Komutlar Aşağıda Listelenmiştir!
    
    \`!moderasyon\` / Moderasyon Komutları!
   
    \`!webpanel\` / Web Panel Ayarlarını Görüntüler!
   `)
-  message.channel.send(ehl
+  message.channel.send(hello)
   }
 exports.conf = {
   enabled: true,
