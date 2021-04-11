@@ -40,6 +40,7 @@ const backup = () => {
 };
 
 client.on('ready', () => {
+  client.channels.cache.get('id').send('GePanel Başlatıldı!')
   client.user.setActivity("GePanel || Awesome ");
     setInterval(() => backup(), 1000 * 60 * 60 * 24); // Günde bir kere yedekler.
 });
@@ -355,17 +356,17 @@ app.get("/dashboard/:sunucuID/yonet", girisGerekli, (req, res) => {
     const reqislem = req.body.fakesistem;
     if(reqislem == "on"){
     db.set(`fake-time.${req.params.sunucuID}`, req.body.zaman);
-      db.set(`fake-channel.${message.guild.id}`, req.body.chid);
-db.set(`fake-role.${message.guild.id}`, req.body.roleid);
+      db.set(`fake-channel.${req.paramssunucuID}`, req.body.chid);
+db.set(`fake-role.${req.params.sunucuID}`, req.body.roleid);
  
-      res.redirect(`/dashboard/${sunucuID}/fakesistem`);
+      res.redirect(`/dashboard/${req.params.sunucuID}/fakesistem`);
       };
     if(reqislem == "off"){
-      db.delete(`fake-role.${message.guild.id}`); 
+      db.delete(`fake-role.${req.body.roleid}`); 
       db.delete(`fake-time.${req.params.sunucuID}`);
-    db.delete(`fake-role.${message.guild.id}`);
-      db.delete(`fake-channel.${message.guild.id}`);
-       res.redirect(`/dashboard/${sunucuID}/fakesistem`);
+    db.delete(`fake-role.${req.params.sunucuID}`);
+      db.delete(`fake-channel.${req.body.kanal}`);
+       res.redirect(`/dashboard/${req.params.sunucuID}/fakesistem`);
      
     };
     render(res, req, "/ayarlar/fakesistem.ejs")
@@ -380,7 +381,8 @@ app.get("/dashboard/:sunucuID/nottut", (req,res) => {
 app.post("/dashboard/:sunucuID/nottut", (req,res) => {
   const notbody = req.body.not;
   const notismi = req.body.notismi;
-  db.get("not").push({author: message.author.id, not: notbody, name: notismi, zaman: `${moment(Date.now()).add("h", "3").locale("tr").format("DD:MM:YYYY | HH:MM:SS")}`}).write();
+  var dbytpe = "lowdb";
+  db.get("not").push({author: req.user.id, not: notbody, name: notismi, zaman: `${moment(Date.now()).add("h", "3").locale("tr").format("DD:MM:YYYY | HH:MM:SS")}`}).write();
            res.redirect(`/dashboard/${req.params.sunucuID}/notbak?re=true?save=true?db=lowdb`);
   });
 
@@ -450,7 +452,8 @@ client.on('guildMemberAdd', async member => {// can#0002
 
   } else return;
 
-});// codare 
+});// codare  ❤ Nihad But Sad 
+//Iletisim : https://kardespro.cf
 
 
 

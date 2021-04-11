@@ -27,7 +27,8 @@
     "path": "^0.12.7",
     "url": "^0.11.0",
     "fs": "^0.0.2",
-    "better-sqlite3": "^7.1.2"
+    "better-sqlite3": "^7.1.2",
+    "nukleon": "^0.0.2"
   },
   "engines": {
     "node": "12.x"
