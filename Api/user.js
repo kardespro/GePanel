@@ -15,4 +15,14 @@ const query = req.query.query;
 db.set(`goldd_${query}`);
 res.redirect("./api");
 });
+app.get("/yonlendir", (req,res) => {
+const site = req.query.hedefsite;
+/*
+
+@ Var hedefsite
+
+@ /api/yonlendir?hedefsite=sitelinki
+
+*/
+});
 app.listen(660)
