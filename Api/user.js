@@ -3,5 +3,16 @@
 
 const ex = require("express");
 const app = ex();
-
+const configg = require("././config.json");
+app.get("/", (req,res) => {
+const array = {
+`${configg.siteURL}/api/$apiPath`
+};
+res.json(array);
+});
+app.get("/goldver?:query", (req,res) => {
+const query = req.query.query;
+db.set(`goldd_${query}`);
+res.redirect("./api");
+});
 app.listen(660)
