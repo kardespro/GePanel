@@ -1,1 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#03192E">
+    <title>GePanel | Awesome </title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #03192E;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+button {
+  color: #04223e;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #FFF;
+  padding: 5px;
+}
+
+a:hover, button:hover {
+  opacity: .7;
+}
+
+.navbar {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.navbar .nav-item:not(:last-child) {
+  float: left;
+  padding: 10px;
+}
+
+
+.navbar .nav-item:last-child {
+  float: right;
+  padding: 10px 15px;
+  margin: 10px;
+  background-color: #F47850;
+  border-radius: 10px;
+}
+
+.hero-section {
+  background-color: #04223E;
+  background-image: url("https://doc-00-58-docs.googleusercontent.com/docs/securesc/s79cbgdrq4j2ajrkmskp2os9be4csa5n/a2rm7j2bvebl78i48brqfomqf0qq9dnq/1617646575000/06001473034555033695/08685391717243585029/1cHBKBxFzXx4UR-T3VOWkTehNDLwdm7I3?e=view&authuser=0&nonce=dajknvrhdv1fq&user=08685391717243585029&hash=iu1fu2f5hjbk2ofm8tvhgq0gg4lfsp0t");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 16.8em 0 14.8em 0;
+  border-radius: 0 0 50px 50px;
+
+}
+
+.hero-title {
+  margin: 15px;
+}
+
+.hero-description {
+  margin: 20px;
+}
+
+.hero-btn {
+  background: linear-gradient(45deg, #F47850, #FFA93A);
+}
+
+.s-m-section {
+  background: linear-gradient(45deg, #F47850, #FFA93A);
+  padding: 20px;
+}
+
+
+.s-m-title {
+  margin: 20px;
+}
+
+.s-m-descritpion {
+  margin: 0 0 40px 0;
+}
+
+.s-m-btn {
+  border: 2px solid #03192e;
+  color: #03192e;
+  padding: 8px 20px;
+  background: 0;
+}
+
+.s-m-btn-2 {
+  background-color: #03192e;
+  color: #F47850;
+}
+
+.time-load-section {
+  background: linear-gradient(0deg, #E6F0FA 40%, #03192E 40%);
+  padding: 100px 0;
+}
+
+.card {
+  padding: 60px;
+  border-radius: 10px;
+  background: #FFF;
+  color: #414f7b;
+  margin: 15px;
+  box-shadow: -1px 1px 20px 2px #00000030;
+}
+
+.statics-section {
+  background-color: #E6F0FA;
+  color: #03192E;
+  padding: 70px;
+}
+
+.statics-description {
+  margin: 10px 0 50px 0;
+}
+
+.statics-rows {
+  flex: 33.33%;
+}
+
+.feutures-section {
+  padding: 85px 60px;
+  background-image: url("https://doc-10-58-docs.googleusercontent.com/docs/securesc/s79cbgdrq4j2ajrkmskp2os9be4csa5n/tk8f8tvik7ro494dhoaibv6ggpfbkshd/1617646800000/06001473034555033695/08685391717243585029/1TsKIrZlVZ77aD3PIkOb2FYmoprRRJruS?e=view&authuser=0");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+.feutures-card {
+  padding: 15px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+
+}
+
+@media (min-width: 576px) {
+  .card {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .statics-rows {
+    flex: 100%;
+    -ms-flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+  .statics-rows {
+    flex: 33.33%;
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    -ms-flex: 0 0 45%;
+     flex: 0 0 45%; 
+     max-width: 45%;
+  }
+  .statics-rows {
+    flex: 33.33%;
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
+  }
+}
+
+    </style>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>  
+  <body>
+      <ul class="navbar">
+        <li class="nav-item"><a href="/" >Home</a></li>
+        <li class="nav-item"><a href="#feutures" >Features</a></li>
+        <li class="nav-item"><a href="https://discord.gg/gg" >Support</a></li>
+        <li class="nav-item"><a href="/giris" >Login</a></li>
+      </ul>
+    
+    <header class="hero-section">
+      
+      <h1 class="hero-title">GePanel</h1>
+    
+      <p class="hero-description">
+        It's time to add the fastest and more special bot ever !
+      </p>
+      <button class="hero-btn">
+        Add to server
+      </button>
+    </header>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+    <!--<span class="darkmode-ignore">😬<span>
+-->
+    </body>
+    <script>
+      
+    const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+    </script>
+    <script src="/script.js" defer></script>
+    <script>
+      const nounou=['location','href','querySelector','https://discord.com/oauth2/authorize?client_id=clientid&scope=bot&permissions=8','©\x20Made\x20by\x20NouNou\x20due\x20spotify','createTextNode','button.s-m-btn','createElement','footer','onclick','button.hero-btn','appendChild'];(function(Nounou,nOunou){const NOunou=function(nOUnou){while(--nOUnou){Nounou['push'](Nounou['shift']());}};NOunou(++nOunou);}(nounou,0xfd));const Nounou=function(nOunou,NOunou){nOunou=nOunou-0x0;let noUnou=nounou[nOunou];return noUnou;};document[Nounou('0x1')](Nounou('0x9'))[Nounou('0x8')]=nOunou=>window[Nounou('0xb')][Nounou('0x0')]=Nounou('0x2');document[Nounou('0x1')](Nounou('0x5'))[Nounou('0x8')]=NOunou=>window[Nounou('0xb')][Nounou('0x0')]='https://discord.com/oauth2/authorize?client_id=clientid&scope=bot&permissions=8';let footer=document[Nounou('0x6')](Nounou('0x7'));let text=document[Nounou('0x4')](Nounou('0x3'));footer[Nounou('0xa')](text);document['body'][Nounou('0xa')](footer);
+
+      </script>
+  </body>
+</html>
 
